@@ -40,9 +40,28 @@ import boy3 from './boy3.jpg'
 import girl1 from './girl1.jpg'
 import girl2 from './girl2.png'
 import girl3 from './girl3.png'
+import adope_logo from './adope_logo.png'
+import meta_logo from './meta_logo.png'
+import netflix_logo from './netflix_logo.png'
+import salesforce_logo from './salesforce_logo.png'
+import spotify_logo from './spotify_logo.png'
+import tesla_logo from './tesla_logo.png'
+import google_logo from './google_logo.png'
+import ibm_logo from './ibm_logo.png'
+import intel_logo from './intel_logo.png'
+
 
 
 export const assets = {
+    intel_logo,
+    ibm_logo,
+    google_logo,
+    tesla_logo,
+    spotify_logo,
+    salesforce_logo,
+    netflix_logo,
+    meta_logo,
+    adope_logo,
     boy1,
     boy2,
     boy3,

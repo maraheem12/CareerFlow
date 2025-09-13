@@ -8,7 +8,7 @@ const Navbar = () => {
   const { user } = useUser();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Function to close the menu, useful for when a link is clicked
+  
   const handleMenuClose = () => {
     setIsMenuOpen(false);
   };
@@ -16,12 +16,12 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 shadow py-4 bg-white/80 backdrop-blur z-50">
       <div className="container px-4 2xl:px-20 mx-auto flex justify-between items-center">
-        {/* Logo */}
+        
         <Link to="/" onClick={handleMenuClose}>
           <img src={assets.logo} width="90" alt="Logo" />
         </Link>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop */}
         <div className="hidden md:flex items-center gap-6">
           <Link className="hover:bg-gray-200 px-4 py-2 rounded-full" to="/">
             Home
@@ -34,7 +34,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Desktop User/Auth Buttons */}
+        
         <div className="hidden md:flex items-center gap-4">
           {user ? (
             <>
@@ -63,7 +63,7 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Hamburger Menu Icon for Mobile */}
+        {/* Hamburger Menu Mobile */ }
         <div className="md:hidden">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -71,7 +71,7 @@ const Navbar = () => {
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-              // Close Icon (X)
+            
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"

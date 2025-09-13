@@ -25,7 +25,7 @@ const Footer = () => {
               </p>
             </div>
 
-            {/* Navigation Links */}
+            
             <div className="flex flex-col md:flex-row items-center mb-6 md:mb-0">
               <Link
                 to="/"
@@ -47,7 +47,7 @@ const Footer = () => {
               </Link>
             </div>
 
-            {/* Social Media Links */}
+            
             <div className="flex space-x-6">
               <SocialIcon href="https://github.com/maraheem12">
                 <svg
@@ -76,10 +76,10 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Divider */}
+          
           <hr className="my-8 border-gray-600" />
 
-          {/* Copyright notice */}
+          
           <div className="text-center text-gray-400 text-sm">
             <p>
               &copy; {new Date().getFullYear()} CareerFlow. All rights reserved.
