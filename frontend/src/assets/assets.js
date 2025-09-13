@@ -34,8 +34,21 @@ import samsung_logo from './samsung_logo.png'
 import adobe_logo from './adobe_logo.png'
 import amazon_logo from './amazon_logo.png'
 import intro from './intro.png'
+import boy1 from './boy1.jpg'
+import boy2 from './boy2.jpg'
+import boy3 from './boy3.jpg'
+import girl1 from './girl1.jpg'
+import girl2 from './girl2.png'
+import girl3 from './girl3.png'
+
 
 export const assets = {
+    boy1,
+    boy2,
+    boy3,
+    girl1,
+    girl2,
+    girl3,
     logo,
     intro,
     search_icon,
@@ -916,4 +929,399 @@ export const jobsData = [
         date: 1729681667114,
         category: "Programming",
     }
+];
+
+/**
+ * skills.js
+ * This file exports an array of skill objects, now using pure JavaScript objects for icons
+ * to ensure compatibility with a standard .js file.
+ * Each object represents a technology, with its icon data structured for rendering in a React component.
+ */
+// export const skills = [
+
+
+//   {
+//     name: 'MongoDB',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-green-600',
+//       svgProps: { fill: 'currentColor' },
+//       elements: [{ type: 'path', props: { d: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.17c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V11h-3v5.17zM12 9c.83 0 1.5-.67 1.5-1.5S12.83 6 12 6s-1.5.67-1.5 1.5S11.17 9 12 9z' } }],
+//     },
+//   },
+//   {
+//     name: 'Express.js',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-gray-700',
+//       svgProps: { fill: 'none', stroke: 'currentColor', strokeWidth: '2' },
+//       elements: [{ type: 'path', props: { d: 'M4 10h16m-8-4v8m-4 0h8' } }],
+//     },
+//   },
+//   {
+//     name: 'React',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-blue-500',
+//       svgProps: { fill: 'none', stroke: 'currentColor', strokeWidth: '1.5' },
+//       elements: [
+//         { type: 'ellipse', props: { cx: '12', cy: '12', rx: '11', ry: '4.2' } },
+//         { type: 'ellipse', props: { cx: '12', cy: '12', rx: '11', ry: '4.2', transform: 'rotate(60 12 12)' } },
+//         { type: 'ellipse', props: { cx: '12', cy: '12', rx: '11', ry: '4.2', transform: 'rotate(120 12 12)' } },
+//         { type: 'circle', props: { cx: '12', cy: '12', r: '1.5', fill: 'currentColor' } },
+//       ],
+//     },
+//   },
+//   {
+//     name: 'Node.js',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-green-500',
+//       svgProps: { fill: 'currentColor' },
+//       elements: [{ type: 'path', props: { d: 'M20.62 8.11L13.12 3.3a2 2 0 00-2.24 0l-7.5 4.81A2 2 0 002 9.88v8.24a2 2 0 001.38 1.87l7.5 4.81a2 2 0 002.24 0l7.5-4.81a2 2 0 001.38-1.87V9.88a2 2 0 00-1.38-1.77z' } }],
+//     },
+//   },
+//   // Core Languages
+//   {
+//     name: 'JavaScript',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-yellow-500',
+//       svgProps: { fill: 'currentColor' },
+//       elements: [
+//         { type: 'path', props: { d: 'M1 1h22v22H1z', fill: 'none' } },
+//         { type: 'path', props: { d: 'M9.42 16.88L12 14.3l2.58 2.58L16 15.46l-2.58-2.58L16 10.3l-1.42-1.42L12 11.46 9.42 8.88 8 10.3l2.58 2.58L8 15.46z' } },
+//       ],
+//     },
+//   },
+//   {
+//     name: 'Java',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-red-500',
+//       svgProps: { fill: 'currentColor' },
+//       elements: [{ type: 'path', props: { d: 'M4 4h16v12h-4v4H8v-4H4zm6 14h4v-4h-4zM6 6h12v8H6z' } }],
+//     },
+//   },
+//   {
+//     name: 'Python',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-blue-700',
+//       svgProps: { fill: 'currentColor' },
+//       elements: [{ type: 'path', props: { d: 'M15 4a2 2 0 00-2 2v3h-2V6a2 2 0 00-4 0v3H5v4h2v2a2 2 0 004 0v-2h2v3a2 2 0 002 2h3a2 2 0 002-2v-3h2v-4h-2V6a2 2 0 00-2-2h-3z' } }],
+//     },
+//   },
+//   {
+//     name: 'HTML',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-orange-600',
+//       svgProps: { fill: 'none', stroke: 'currentColor', strokeWidth: '2' },
+//       elements: [{ type: 'path', props: { d: 'M7 8l-4 4 4 4m10-8l4 4-4 4M14.5 4l-5 16' } }],
+//     },
+//   },
+//   {
+//     name: 'CSS',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-blue-500',
+//       svgProps: { fill: 'none', stroke: 'currentColor', strokeWidth: '2' },
+//       elements: [{ type: 'path', props: { d: 'M15 11l-3 6-3-6 3-6 3 6zM9 21a9 9 0 0011.88-6.12M3 12a9 9 0 0111.88-6.12' } }],
+//     },
+//   },
+//   {
+//     name: 'SQL',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-indigo-500',
+//       svgProps: { fill: 'currentColor' },
+//       elements: [{ type: 'path', props: { d: 'M12 2C6.48 2 2 4.69 2 8s4.48 6 10 6 10-2.69 10-6-4.48-6-10-6zm0 18c-4.42 0-8-1.79-8-4v-3.33c1.45.99 4.47 1.33 8 1.33s6.55-.34 8-1.33V16c0 2.21-3.58 4-8 4zm0-10c-4.42 0-8-1.79-8-4s3.58-4 8-4 8 1.79 8 4-3.58 4-8 4z' } }],
+//     },
+//   },
+//   // Frontend
+//   {
+//     name: 'TypeScript',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-blue-600',
+//       svgProps: { fill: 'currentColor' },
+//       elements: [
+//         { type: 'path', props: { d: 'M1 1h22v22H1z', fill: 'none' } },
+//         { type: 'path', props: { d: 'M6.5 11.25h11v1.5h-11zM12 4l-4.5 8h9z' } },
+//       ],
+//     },
+//   },
+//   {
+//     name: 'Tailwind CSS',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-teal-500',
+//       svgProps: { fill: 'none', stroke: 'currentColor', strokeWidth: '2' },
+//       elements: [{ type: 'path', props: { d: 'M4 12c4.42 0 8-3.58 8-8m-8 8c4.42 0 8 3.58 8 8m-8-8h16m-8 8c-4.42 0-8-3.58-8-8m8 8c-4.42 0-8 3.58-8 8' } }],
+//     },
+//   },
+//   {
+//     name: 'Redux',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-purple-600',
+//       svgProps: { fill: 'none', stroke: 'currentColor', strokeWidth: '1.5' },
+//       elements: [
+//         { type: 'path', props: { d: 'M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4m-2.83-7.07l-2.83 2.83M16.24 16.24l-2.83 2.83' } },
+//         { type: 'circle', props: { cx: '12', cy: '12', r: '3' } },
+//       ],
+//     },
+//   },
+//   // Tools & Platforms
+//   {
+//     name: 'Git',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-red-600',
+//       svgProps: { fill: 'none', stroke: 'currentColor', strokeWidth: '2' },
+//       elements: [
+//         { type: 'path', props: { d: 'M18 6l-6 6-6-6' } },
+//         { type: 'path', props: { d: 'M12 12v9' } },
+//         { type: 'circle', props: { cx: '18', cy: '6', r: '3' } },
+//         { type: 'circle', props: { cx: '6', cy: '6', r: '3' } },
+//         { type: 'circle', props: { cx: '12', cy: '21', r: '3' } },
+//       ],
+//     },
+//   },
+//   {
+//     name: 'GitHub',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-gray-800',
+//       svgProps: { fill: 'currentColor' },
+//       elements: [{ type: 'path', props: { fillRule: 'evenodd', d: 'M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z', clipRule: 'evenodd' } }],
+//     },
+//   },
+//   {
+//     name: 'Postman',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-orange-500',
+//       svgProps: { fill: 'currentColor' },
+//       elements: [{ type: 'path', props: { d: 'M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 4a6 6 0 100 12 6 6 0 000-12zm-3 5h6v2H9v-2z' } }],
+//     },
+//   },
+//   {
+//     name: 'Vercel',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-black',
+//       svgProps: { fill: 'currentColor' },
+//       elements: [{ type: 'path', props: { d: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5-10-5-10 5z' } }],
+//     },
+//   },
+//   {
+//     name: 'Docker',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-blue-400',
+//       svgProps: { fill: 'currentColor' },
+//       elements: [{ type: 'path', props: { d: 'M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12h20zM4 14h2v2H4v-2zm4 0h2v2H8v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z' } }],
+//     },
+//   },
+//   {
+//     name: 'Firebase',
+//     icon: {
+//       viewBox: '0 0 24 24',
+//       className: 'w-8 h-8 mx-auto mb-2 text-yellow-400',
+//       svgProps: { fill: 'currentColor' },
+//       elements: [{ type: 'path', props: { d: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 15l-4-4 1.5-1.5 2.5 2.5 5.5-5.5 1.5 1.5-7 7z' } }],
+//     },
+//   },
+// ];
+
+// /-------------------------------------------------------------------------------/
+
+
+
+
+
+
+export const skills = [
+  // MERN Stack
+  {
+    name: 'MongoDB',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-green-600',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4.5C14.33,4.5 15.8,6.62 15.2,8.65C15,9.35 14.26,9.5 13.8,9.05L12.1,7.2C11.7,6.75 11,6.9 11,7.5V13C11,13.55 10.55,14 10,14H9C8.45,14 8,13.55 8,13V7.5C8,5.83 9.42,4.5 11.25,4.5C11.5,4.5 11.75,4.5 12,4.5Z' } }],
+    },
+  },
+  {
+    name: 'Express.js',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-gray-700',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M3 3h18v18H3V3zm5.24 2.05l1.54.4.95-3.35-1.54-.4-.95 3.35zm3.62 1.34l.4 1.53 3.34-.96-.4-1.53-3.34.96zm-1.01 4.25l-2.83 2.76.9.92 3.74-3.66-.9-.92-3.77 3.66.06-.06zm.93-1.87c.97 0 1.75-.78 1.75-1.75s-.78-1.75-1.75-1.75-1.75.78-1.75 1.75.78 1.75 1.75 1.75zm-1.12 6.78l-1.54-.4-.95 3.35 1.54.4.95-3.35z' } }],
+    },
+  },
+  {
+    name: 'React',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-blue-500',
+      svgProps: { fill: 'none', stroke: 'currentColor', strokeWidth: '1.5' },
+      elements: [
+        { type: 'ellipse', props: { cx: '12', cy: '12', rx: '11', ry: '4.2' } },
+        { type: 'ellipse', props: { cx: '12', cy: '12', rx: '11', ry: '4.2', transform: 'rotate(60 12 12)' } },
+        { type: 'ellipse', props: { cx: '12', cy: '12', rx: '11', ry: '4.2', transform: 'rotate(120 12 12)' } },
+        { type: 'circle', props: { cx: '12', cy: '12', r: '1.5', fill: 'currentColor' } },
+      ],
+    },
+  },
+  {
+    name: 'Node.js',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-green-500',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M12,2.6L4.4,6.8v8.4l7.6,4.2l7.6-4.2V6.8L12,2.6z M11.1,17.4v-3.8l-3.3-1.8v3.2L11.1,17.4z M11.1,12.3v-3L8,7.6l3.1-1.8v3.1 l3.3,1.9v3.1L11.1,12.3z M12.9,15.1v-3.2l3.3,1.8v3.8L12.9,15.1z' } }],
+    },
+  },
+  // Core Languages
+  {
+    name: 'JavaScript',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-yellow-500',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M0 0h24v24H0V0h24z', fill: 'none' } }, { type: 'path', props: { d: 'M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10S22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-2.5-4.5h1v-4h-1v4zm5 0h1v-4h-1v4z' } }],
+    },
+  },
+  {
+    name: 'Java',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-blue-500', // Official color is often blue/orange
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M4 2v2h16V2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-2H4v2a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zm0 16h16V4H4v14zM8 8h8v2H8zm0 4h8v2H8z' } }],
+    },
+  },
+  {
+    name: 'Python',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-blue-700',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M16.5 7.5V3H15v4.5h1.5zM7.5 21H9v-4.5H7.5v4.5zm2.25-13.5c0-1.65-1.35-3-3-3s-3 1.35-3 3v4.5h1.5V7.5c0-.825.675-1.5 1.5-1.5s1.5.675 1.5 1.5V12h6V7.5c0-1.65-1.35-3-3-3s-3 1.35-3 3v1.5h1.5V7.5zm4.5 9c0 1.65 1.35 3 3 3s3-1.35 3-3V12h-1.5v4.5c0 .825-.675 1.5-1.5 1.5s-1.5-.675-1.5-1.5V12h-6v4.5z' } }],
+    },
+  },
+  {
+    name: 'HTML',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-orange-600',
+      svgProps: { fill: 'none', stroke: 'currentColor', strokeWidth: '2' },
+      elements: [{ type: 'path', props: { d: 'M7 8l-4 4 4 4m10-8l4 4-4 4M14.5 4l-5 16' } }],
+    },
+  },
+  {
+    name: 'CSS',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-blue-500',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.91L5.41 4.91l.213 2.622 10.125.002-.255 2.716-4.2.002-4.178-.002.213 2.622h3.965l.213 2.404L8.74 15.35l-.09.918 3.327.918.016-.002 3.344-.93.318-3.725h-2.92l-.159-1.804h3.292l.213-3.13L18.59 4.91z' } }],
+    },
+  },
+  {
+    name: 'SQL',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-indigo-500',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M12 2C6.48 2 2 4.69 2 8s4.48 6 10 6 10-2.69 10-6-4.48-6-10-6zm0 18c-4.42 0-8-1.79-8-4v-3.33c1.45.99 4.47 1.33 8 1.33s6.55-.34 8-1.33V16c0 2.21-3.58 4-8 4zm0-10c-4.42 0-8-1.79-8-4s3.58-4 8-4 8 1.79 8 4-3.58 4-8 4z' } }],
+    },
+  },
+  // Frontend
+  {
+    name: 'TypeScript',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-blue-600',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm7.88 17.032V13.2h3.36v1.128h-2.232v1.536h2.1v1.128h-2.1v1.56h2.232v1.128H9.38zm5.04-4.824c1.128 0 1.968.144 2.52.408l.384-1.464c-.624-.288-1.536-.504-2.88-.504-2.4 0-4.008 1.2-4.008 3.24 0 2.04 1.488 3.144 3.96 3.144 2.304 0 3.312-.912 3.312-2.16 0-1.152-.72-1.68-1.92-1.92l-1.392-.312c-.528-.12-.744-.312-.744-.648 0-.312.24-.528.72-.528.48 0 .888.168 1.2.336l.336-1.128c-.336-.144-.792-.288-1.512-.288-.984 0-1.68.456-1.68 1.224 0 .72.504 1.104 1.584 1.344l1.32.288c.6.144.84.36.84.696 0 .432-.336.696-.864.696-.6 0-1.128-.216-1.488-.456l-.384 1.152c.48.264 1.176.456 2.04.456 1.584 0 2.592-.744 2.592-1.968 0-1.536-1.152-2.304-3.144-2.304h-.24z' } }],
+    },
+  },
+  {
+    name: 'Tailwind CSS',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-teal-500',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z' } }],
+    },
+  },
+  {
+    name: 'Redux',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-purple-600',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M11.185 15.311c-1.246 1.446-2.213 2.126-3.722 2.126-1.684 0-2.82-1.054-2.82-2.522 0-1.834 1.344-2.82 3.422-3.14l1.01-.132c.187-.024.258-.108.258-.234 0-.21-.186-.336-.575-.336-.504 0-1.033.21-1.465.725l-1.344-.937c.745-.96 1.963-1.536 3.287-1.536 1.758 0 2.946 1.054 2.946 2.447 0 .937-.41 1.716-1.247 2.2l-1.12.66c-.36.21-.432.384-.432.6 0 .313.21.48.552.48.528 0 1.104-.336 1.633-1.126l1.32.937zM21.13 14.73c0 2.257-1.585 3.552-4.128 3.552-2.52 0-4.104-1.295-4.104-3.528 0-2.256 1.584-3.552 4.104-3.552s4.128 1.296 4.128 3.528zm-2.327 0c0-1.032-.672-1.776-1.8-1.776s-1.8.744-1.8 1.776c0 1.056.672 1.776 1.8 1.776s1.8-.72 1.8-1.776z' } }],
+    },
+  },
+  // Tools & Platforms
+  {
+    name: 'Git',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-red-600',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M22.523 8.893l-6.273-6.273c-.56-.56-1.468-.56-2.028 0l-1.137 1.137 3.09 3.09-.328.328-3.09-3.09-8.484 8.484 3.09 3.09-.327.327-3.09-3.09-1.138 1.138c-.56.56-.56 1.468 0 2.028l6.273 6.273c.56.56 1.468.56 2.028 0l9.648-9.648c.56-.56.56-1.467 0-2.027zM14.828 14c-.414 0-.75-.336-.75-.75s.336-.75.75-.75.75.336.75.75-.336.75-.75.75zm-1.5-1.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75.336-.75.75-.75.75.336.75.75zm1.5-1.5c-.414 0-.75-.336-.75-.75s.336-.75.75-.75.75.336.75.75-.336.75-.75.75zm3 0c-.414 0-.75-.336-.75-.75s.336-.75.75-.75.75.336.75.75-.336.75-.75.75zm-1.5-1.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75.336-.75.75-.75.75.336.75.75z' } }],
+    },
+  },
+  {
+    name: 'GitHub',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-gray-800',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { fillRule: 'evenodd', d: 'M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z', clipRule: 'evenodd' } }],
+    },
+  },
+  {
+    name: 'Postman',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-orange-500',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M20.882 12.724c.03.202.046.408.046.618C20.928 17.58 16.92 21.6 12 21.6c-4.92 0-8.928-4.02-8.928-8.258 0-.21.016-.416.046-.618.06-.416.15-.812.27-1.188L12 18l8.612-6.464c.26.376.19.772.27 1.188zM12 2.4c-4.08 0-7.536 2.7-8.64 6.36l8.64 6.48 8.64-6.48C19.536 5.1 16.08 2.4 12 2.4z' } }],
+    },
+  },
+  {
+    name: 'Vercel',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-black',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M12 2L2 22h20L12 2z' } }],
+    },
+  },
+  {
+    name: 'Docker',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-blue-400',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M22.012 12.871c-.035.795-.08 1.583-.135 2.365a.692.692 0 0 1-.689.635H2.812a.692.692 0 0 1-.689-.635c-.055-.782-.1-1.57-.135-2.365-.008-.18.01-.36.05-.536.216-.92.68-1.78 1.34-2.52C4.545 8.442 5.952 7.4 8.28 6.945c1.43-.28 2.92-.358 4.38-.223 1.52.14 2.98.534 4.31 1.25.99.53 1.83 1.29 2.51 2.27.39.55.7 1.17.91 1.83.05.15.07.3.07.45v0zm-1.05-1.99c-.2-.62-.48-1.2-.84-1.71-.62-.9-1.4-1.59-2.35-2.07-1.25-.65-2.61-1.01-4.01-1.14-1.37-.12-2.76-.05-4.1.2-2.19.42-3.51 1.39-4.59 2.68-.62.75-1.04 1.57-1.25 2.48h19.14v-.44zm-15.68 5.75H4.1v1.18h1.18v-1.18zm2.36 0H6.46v1.18h1.18v-1.18zm2.36 0H8.82v1.18h1.18v-1.18zm2.36 0h-1.18v1.18h1.18v-1.18zm2.36 0h-1.18v1.18h1.18v-1.18z' } }],
+    },
+  },
+  {
+    name: 'Firebase',
+    icon: {
+      viewBox: '0 0 24 24',
+      className: 'w-8 h-8 mx-auto mb-2 text-yellow-400',
+      svgProps: { fill: 'currentColor' },
+      elements: [{ type: 'path', props: { d: 'M3.4,18.1l6.4-14.8c0.3-0.8,1.5-0.8,1.8,0l6.4,14.8c0.3,0.7-0.2,1.5-1,1.5H4.3C3.6,19.6,3,18.8,3.4,18.1z M5,18.2h14L12,5.2L5,18.2z M12,14.6l-2.4,5.9c-0.2,0.5,0.4,1,0.9,0.7l2.8-1.8c0.4-0.3,1-0.3,1.4,0l2.8,1.8c0.5,0.3,1.1-0.2,0.9-0.7l-2.4-5.9 C12.6,13.8,11.4,13.8,12,14.6z' } }],
+    },
+  },
 ];
