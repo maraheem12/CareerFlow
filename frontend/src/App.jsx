@@ -4,10 +4,13 @@ import Home from "./pages/Home";
 import ApplyJob from "./pages/ApplyJob";
 import Applications from "./pages/Applications";
 import Start from "./pages/start";
+import Navbar from "./components/Navbar.jsx";
 
 function App() {
   return (
+    
     <div>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Start/>} />
         <Route path="/Home" element={<Home/>} />
