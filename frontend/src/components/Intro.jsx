@@ -27,32 +27,7 @@ const Intro = () => {
           </h2>
         </div>
       </div>
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center  p-4">
-        <div className="bg-white w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 rounded-xl">
-          <div className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-              My Tech Stack
-            </h2>
-            <p className="mt-4 text-lg text-gray-500">
-              A collection of the technologies, languages, and tools I use.
-            </p>
-          </div>
-          <div className="mt-12 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-3"
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-5px)';
-              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
-            }}
-            >
-            {skills.map((skill) => (
-              <SkillCard key={skill.name} name={skill.name} icon={skill.icon} />
-            ))}
-          </div>
-        </div>
-      </div>
+      
     </div>
   )
 }

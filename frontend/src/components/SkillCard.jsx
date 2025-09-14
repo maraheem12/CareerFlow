@@ -1,30 +1,23 @@
 import React from "react";
-
-const SkillCard = ({ name, icon }) => {
-  const DynamicIcon = ({ iconData }) => {
-    if (!iconData || !iconData.elements) {
-      return null;
-    }
-
+const SkillCard = ({ img, name, description }) => {
     return (
-      <svg
-        viewBox={iconData.viewBox}
-        className={iconData.className}
-        {...iconData.svgProps}
-      >
-        {iconData.elements.map((el, index) => {
-          const Element = el.type; // e.g., 'path', 'circle'
-          return <Element key={index} {...el.props} />;
-        })}
-      </svg>
+        <div className="bg-white rounded-2xl shadow-lg p-8 max-w-sm mx-auto flex flex-col items-center text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+        <img
+            src={img}
+            alt={name}
+            className="w-24 h-24 mb-6 object-contain"
+            onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = 'https://placehold.co/96x96/e0e0e0/333?text=Error';
+            }}
+        />
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            {name}
+        </h2>
+        <p className="text-gray-600">
+            {description}
+        </p>
+        </div>
     );
-  };
-  return (
-    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out cursor-pointer">
-      <DynamicIcon iconData={icon} />
-      <p className="font-semibold text-gray-700 mt-2">{name}</p>
-    </div>
-  );
-};
-
+    };
 export default SkillCard;
