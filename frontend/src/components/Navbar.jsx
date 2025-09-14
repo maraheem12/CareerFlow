@@ -23,7 +23,7 @@ const Navbar = () => {
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-6">
-          <Link className="hover:bg-gray-200 px-4 py-2 rounded-full" to="/">
+          <Link className="hover:bg-gray-200 px-4 py-2 rounded-full" to="/home">
             Home
           </Link>
           <Link className="hover:bg-gray-200 px-4 py-2 rounded-full" to="/about">

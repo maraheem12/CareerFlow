@@ -3,7 +3,7 @@ import TechStack from '../components/TechStack'
 import AboutIntro from '../components/AboutIntro'
 import AboutPlatform from '../components/AboutPlatform'
 import AboutSearch from '../components/AboutSearch'
-import Footer from '../components/Footer'
+
 
 
 const About = () => {
@@ -13,7 +13,6 @@ const About = () => {
       <AboutPlatform/>
       <TechStack/>
       <AboutSearch/>
-      <Footer/>
     </div>
   )
 }
