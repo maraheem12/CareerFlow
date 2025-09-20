@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 // Make sure to install lucide-react: npm install lucide-react
 import { Mail, Phone, MapPin, Send } from "lucide-react";
