@@ -1,6 +1,6 @@
 import { createContext, useEffect } from "react";
 import { useState } from "react";
-import { jobsData } from "../assets/assets";
+import { JobCategories, jobsData } from "../assets/assets";
 
 export const AppContext = createContext();
 
@@ -8,6 +8,8 @@ export const AppContextProvider = (props) => {
   const [searchFilter, setSearchFilter] = useState({
     title: "",
     location: "",
+    categories: [],
+    locations: []
   });
 
   const [isSearching, setIsSearching] = useState(false);
