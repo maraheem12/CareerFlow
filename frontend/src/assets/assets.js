@@ -1,4 +1,4 @@
-import logo from "./logo.png";
+
 import search_icon from "./search_icon.svg";
 import company_icon from "./company_icon.svg";
 import microsoft_logo from "./microsoft_logo.svg";
@@ -70,7 +70,7 @@ export const assets = {
     girl1,
     girl2,
     girl3,
-    logo,
+
     intro,
     search_icon,
     cross_icon,

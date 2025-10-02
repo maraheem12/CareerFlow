@@ -13,7 +13,7 @@ const HomeCenter = () => {
         tools—designed to help you grow, learn, and succeed with confidence.
       </p>
       <button
-        className="bg-fuchsia-600 hover:bg-fuchsia-700 hover:cursor-pointer  text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+        className="bg-indigo-500 hover:bg-indigo-700 hover:cursor-pointer  text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
         onClick={() => openSignIn()}
       >
         Explore Jobs

@@ -24,7 +24,7 @@ const AboutIntro = () => {
         <div>
           <Link
             to="#"
-            className="inline-block rounded-lg bg-fuchsia-600 hover:bg-fuchsia-700 px-8 py-3 font-medium text-white shadow-md transition-colors duration-300 ease-in-out  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className="inline-block rounded-lg bg-indigo-500 hover:bg-indigo-700 px-8 py-3 font-medium text-white shadow-md transition-colors duration-300 ease-in-out  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             Find Jobs
           </Link>

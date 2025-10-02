@@ -8,7 +8,6 @@ const Navbar = () => {
   const { user } = useUser();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  
   const handleMenuClose = () => {
     setIsMenuOpen(false);
   };
@@ -16,11 +15,16 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 shadow py-4 bg-white/80 backdrop-blur z-50">
       <div className="container px-4 2xl:px-20 mx-auto flex justify-between items-center">
-        
-        <Link to="/" onClick={handleMenuClose} className="text-2xl flex font-bold  " >
-          {/* <img src={assets.logo} width="90" alt="Logo" /> */}
-          <p className=" = " >Career</p>
-          <p className=" text-fuchsia-700 " >Flow</p>
+        <Link
+          to="/"
+          onClick={handleMenuClose}
+          className="text-2xl gap-2 flex font-bold  "
+        >
+          <img src="/careerFlow_Logo.jpg" width="35" alt="Logo" />
+          <div className="flex">
+            <p className=" = ">Career</p>
+            <p className=" text-blue-500 ">Flow</p>
+          </div>
         </Link>
 
         {/* Desktop */}
@@ -28,15 +32,20 @@ const Navbar = () => {
           <Link className="hover:bg-gray-200 px-4 py-2 rounded-full" to="/home">
             Home
           </Link>
-          <Link className="hover:bg-gray-200 px-4 py-2 rounded-full" to="/about">
+          <Link
+            className="hover:bg-gray-200 px-4 py-2 rounded-full"
+            to="/about"
+          >
             About
           </Link>
-          <Link className="hover:bg-gray-200 px-4 py-2 rounded-full" to="/contact">
+          <Link
+            className="hover:bg-gray-200 px-4 py-2 rounded-full"
+            to="/contact"
+          >
             Contact
           </Link>
         </div>
 
-        
         <div className="hidden md:flex items-center gap-4">
           {user ? (
             <>
@@ -57,7 +66,7 @@ const Navbar = () => {
               </button>
               <button
                 onClick={() => openSignIn()}
-                className="bg-fuchsia-600  cursor-pointer text-white px-6 sm:px-9 py-2 rounded-full hover:bg-fuchsia-700 "
+                className="bg-indigo-500 hover:bg-indigo-700 cursor-pointer text-white px-6 sm:px-9 py-2 rounded-full  "
               >
                 Login
               </button>
@@ -65,7 +74,7 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Hamburger Menu Mobile */ }
+        {/* Hamburger Menu Mobile */}
         <div className="md:hidden">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -73,7 +82,6 @@ const Navbar = () => {
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-            
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -176,20 +184,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Navbar;

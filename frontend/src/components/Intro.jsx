@@ -9,7 +9,7 @@ const Intro = () => {
   return (
     <div>
       <div
-        className="h-[20rem] sm:h-[30rem] md:h-[42rem] bg-cover bg-center"
+        className="h-[20rem] sm:h-[30rem] md:h-[52rem] bg-cover bg-center"
         style={{ backgroundImage: `url(${assets.intro})` }}
       >
         <div className="p-4 sm:px-8 md:px-20 py-35 rounded text-center max-w-2xl flex-col items-center justify-center">

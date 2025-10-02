@@ -114,7 +114,7 @@ const Contact = () => {
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center w-full sm:w-auto rounded-md bg-gradient-to-r  px-6 py-3 font-semibold text-white shadow-md bg-fuchsia-500 hover:bg-fuchsia-700  focus:outline-none focus:ring-2  focus:ring-offset-2 transition-all duration-200 ease-in-out"
+                  className="inline-flex items-center justify-center w-full sm:w-auto rounded-md bg-gradient-to-r  px-6 py-3 font-semibold text-white shadow-md bg-indigo-500  hover:bg-indigo-700   focus:outline-none focus:ring-2  focus:ring-offset-2 transition-all duration-200 ease-in-out"
                 >
                   <Send size={18} className="mr-2" />
                   Send Message
