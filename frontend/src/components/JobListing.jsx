@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { assets, JobCategories, JobLocations } from "../assets/assets";
 import JobCard from "./JobCard";
@@ -10,7 +10,57 @@ const JobListing = () => {
 
   const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const jobsPerPage = 6;
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedLocations, setSelectedLocations] = useState([]);
+  const [filteredJobs, setFilteredJobs] = useState(jobs);
+  const handleCategoryChange = (category) => {
+    setSelectedCategories((prev) => {
+      if (prev.includes(category)) {
+        return prev.filter((cat) => cat !== category);
+      } else {
+        return [...prev, category];
+      }
+    });
+  };
+  const handleLocationChange = (location) => {
+    setSelectedLocations((prev) => {
+      if (prev.includes(location)) {
+        return prev.filter((cat) => cat !== location);
+      } else {
+        return [...prev, location];
+      }
+    });
+  };
+  useEffect(() => {
+    const matchCategory = (job) =>
+      selectedCategories.length === 0 ||
+      selectedCategories.includes(job.category);
+
+    const matchLocation = (job) =>
+      selectedLocations.length === 0 ||
+      selectedLocations.includes(job.location);
+
+    const matchTitle = (job) =>
+      searchFilter.title === "" ||
+      job.title.toLowerCase().includes(searchFilter.title.toLowerCase());
+
+    const matchSearchLocation = (job) =>  
+      searchFilter.location === "" ||
+      job.location.toLowerCase().includes(searchFilter.location.toLowerCase());
+
+    const newFilteredJobs = jobs
+      .slice()
+      .reverse()
+      .filter(
+        (job) =>
+          matchCategory(job) &&
+          matchLocation(job) &&
+          matchTitle(job) &&
+          matchSearchLocation(job)
+      );
+    setFilteredJobs(newFilteredJobs);
+    setCurrentPage(1);
+  }, [jobs, searchFilter, selectedCategories, selectedLocations]);
 
   return (
     <div className=" gap-2 w-full 2xl:px-20 flex flex-col lg:flex-row max-lg:space-y-8 px-10 py-8">
@@ -74,7 +124,12 @@ const JobListing = () => {
           <ul className="space-y-4  text-gray-600 ">
             {JobCategories.map((category, index) => (
               <li className="flex gap-3 items-center" key={index}>
-                <input className="scale-125" type="checkbox" name="" id="" />
+                <input
+                  className="scale-125"
+                  type="checkbox"
+                  onChange={() => handleCategoryChange(category)}
+                  checked={selectedCategories.includes(category)}
+                />
                 {category}
               </li>
             ))}
@@ -90,7 +145,12 @@ const JobListing = () => {
           <ul className="space-y-4  text-gray-600 ">
             {JobLocations.map((location, index) => (
               <li className="flex gap-3 items-center" key={index}>
-                <input className="scale-125" type="checkbox" name="" id="" />
+                <input
+                  className="scale-125"
+                  type="checkbox"
+                  onChange={() => handleLocationChange(location)}
+                  checked={selectedLocations.includes(location)}
+                />
                 {location}
               </li>
             ))}
@@ -105,29 +165,37 @@ const JobListing = () => {
         <p className="mb-8">Get your desired job from top companies</p>
         <div className="grid  grid-cols-1 sm:grid-cols-2  xl:grid-cols-3 gap-4 ">
           {/* Job listings will be rendered here */}
-          {jobs.slice((currentPage-1)*6, currentPage*6).map((job, index) => (
-            <JobCard key={index} job={job} />
-          ))}
+          {filteredJobs
+            .slice((currentPage - 1) * 6, currentPage * 6)
+            .map((job, index) => (
+              <JobCard key={index} job={job} />
+            ))}
         </div>
         {/* Pagination Controls */}
-        {jobs.length > 0 && (
-          <div className="flex item-center justifiy-center space-x-2 mt-10  ">
+        {filteredJobs.length > 0 && (
+          <div className="flex items-center justify-center space-x-2 mt-10">
+            {/* Left Arrow */}
             <a href="#job-list">
-      
-              <img 
-              onClick={() => Math.max(1, currentPage - 1)}
-              src={assets.left_arrow_icon} alt="" />
+              <img
+                onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+                src={assets.left_arrow_icon}
+                alt="Previous"
+                width="20"
+                className="cursor-pointer"
+              />
             </a>
-            {Array.from({ length: Math.ceil(jobs.length / 6) }).map(
+
+            {/* Page Numbers */}
+            {Array.from({ length: Math.ceil(filteredJobs.length / 6) }).map(
               (_, index) => (
-                <a href="#job-list" key={index}>
+                <a key={index} href="#job-list" key={index}>
                   <button
                     onClick={() => setCurrentPage(index + 1)}
-                    className={`w-10 h-10 items-center justify-center border border-gray-300 rounded ${
-                      currentPage == index + 1
-                        ? "bg-blue-100 text-blue-500 "
+                    className={`w-10 h-10 flex items-center justify-center border border-gray-300 rounded ${
+                      currentPage === index + 1
+                        ? "bg-blue-100 text-blue-500"
                         : "text-gray-500"
-                    } `}
+                    }`}
                   >
                     {index + 1}
                   </button>
@@ -135,10 +203,19 @@ const JobListing = () => {
               )
             )}
 
+            {/* Right Arrow */}
             <a href="#job-list">
-              <img 
-              onClick={() => Math.max(currentPage + 1, Math.ceil(jobs.length / 6))}
-              src={assets.right_arrow_icon} alt="" />
+              <img
+                onClick={() =>
+                  setCurrentPage((prev) =>
+                    Math.min(prev + 1, Math.ceil(filteredJobs.length / 6))
+                  )
+                }
+                src={assets.right_arrow_icon}
+                alt="Next"
+                width="20"
+                className="cursor-pointer"
+              />
             </a>
           </div>
         )}
