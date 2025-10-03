@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import { createContext, useEffect } from "react";
 import { useState } from "react";
 import { JobCategories, jobsData } from "../assets/assets";
