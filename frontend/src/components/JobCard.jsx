@@ -41,7 +41,7 @@ const JobCard = ({ job }) => {
             navigate(`/apply-job/${job._id}`);
             scrollTo(0, 0);
           }}
-          className="bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-200"
+          className="bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-500 cursor-pointer transition-colors duration-200"
         >
           Apply now
         </button>
@@ -50,7 +50,7 @@ const JobCard = ({ job }) => {
             navigate(`/apply-job/${job._id}`);
             scrollTo(0, 0);
           }}
-          className="bg-white text-gray-800 border border-gray-300 font-medium py-2 px-4 rounded-md hover:bg-gray-50 transition-colors duration-200"
+          className="bg-white text-gray-800 border border-gray-300 font-medium py-2 px-4 rounded-md cursor-pointer hover:bg-gray-100 transition-colors duration-200"
         >
           Learn more
         </button>
