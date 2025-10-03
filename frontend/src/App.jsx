@@ -10,12 +10,14 @@ import Contact from "./pages/Contact";
 
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
+import RecruiterLogin from "./components/RecruiterLogin.jsx";
 
 function App() {
   return (
     <div>
       <Navbar />
       <main className="flex-grow">
+        <RecruiterLogin/>
         <Routes>
           <Route path="/" element={<Start />} />
           <Route path="/home" element={<Home />} />

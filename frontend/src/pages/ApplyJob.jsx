@@ -3,9 +3,10 @@ import { useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import Loading from "../components/Loading";
 import { Briefcase, MapPin, User, CircleDollarSign } from "lucide-react";
-import { assets } from "../assets/assets";
+import { assets, jobsData } from "../assets/assets";
 import kconvert from "k-convert";
 import moment from "moment";
+import JobCard from "../components/JobCard";
 
 const ApplyJob = () => {
   const { id } = useParams();
@@ -87,6 +88,22 @@ const ApplyJob = () => {
           <button className=" bg-blue-600 p-2.5 px-10 mt-15 cursor-pointer hover:bg-blue-500 text-white rounded ">
             Apply Now
           </button>
+        </div>
+        {/* Right Side jobs */}
+        <div className="w-full lg:w-1/3 mt-8 lg:mt-0 lg:ml-8 space-y-5 ">
+          <h2 className="font-bold text-xl mb-4">
+            More Jobs from {jobData.companyId.name}
+          </h2>
+          {jobs
+            .filter(
+              (job) =>
+                job._id !== jobData._id &&
+                job.companyId._id === jobData.companyId._id
+            )
+            .slice(0, 4)
+            .map((job, index) => (
+              <JobCard key={index} job={job} />
+            ))}
         </div>
       </div>
     </div>

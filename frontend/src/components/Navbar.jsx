@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { assets } from "../assets/assets";
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { openSignIn } = useClerk();
@@ -11,50 +12,70 @@ const Navbar = () => {
   const handleMenuClose = () => {
     setIsMenuOpen(false);
   };
+  const navigate = useNavigate();
 
   return (
     <div className="sticky top-0 shadow py-4 bg-white/80 backdrop-blur z-50">
       <div className="container px-4 2xl:px-20 mx-auto flex justify-between items-center">
-        <Link
-          to="/"
-          onClick={handleMenuClose}
-          className="text-2xl gap-2 flex font-bold  "
+        <button
+          onClick={() => {
+            handleMenuClose();
+            navigate("/");
+            scrollTo(0, 0);
+          }}
+          className="text-2xl cursor-pointer gap-2 flex font-bold  "
         >
           <img src="/careerFlow_Logo.jpg" width="35" alt="Logo" />
           <div className="flex">
             <p className=" = ">Career</p>
             <p className=" text-blue-500 ">Flow</p>
           </div>
-        </Link>
+        </button>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-6">
-          <Link className="hover:bg-gray-200 px-4 py-2 rounded-full" to="/home">
+          <button
+            className="hover:bg-gray-200 cursor-pointer px-4 py-2 rounded-full"
+            onClick={() => {
+              navigate("/home");
+              scrollTo(0, 0);
+            }}
+          >
             Home
-          </Link>
-          <Link
-            className="hover:bg-gray-200 px-4 py-2 rounded-full"
-            to="/about"
+          </button>
+          <button
+            className="hover:bg-gray-200 cursor-pointer px-4 py-2 rounded-full"
+            onClick={() => {
+              navigate("/about");
+              scrollTo(0, 0);
+            }}
           >
             About
-          </Link>
-          <Link
-            className="hover:bg-gray-200 px-4 py-2 rounded-full"
-            to="/contact"
+          </button>
+
+          <button
+            className="hover:bg-gray-200 cursor-pointer px-4 py-2 rounded-full"
+            onClick={() => {
+              scrollTo(0, 0);
+              navigate("/contact");
+            }}
           >
             Contact
-          </Link>
+          </button>
         </div>
 
         <div className="hidden md:flex items-center gap-4">
           {user ? (
             <>
-              <Link
-                className="hover:bg-gray-200 rounded-full px-4 py-2"
-                to="/applications"
+              <button
+                className="hover:bg-gray-200 cursor-pointer rounded-full px-4 py-2"
+                onClick={() => {
+                  scrollTo(0, 0);
+                  navigate("/applications");
+                }}
               >
                 Applied Jobs
-              </Link>
+              </button>
               <p>|</p>
               <p>Hi {user.firstName}</p>
               <UserButton afterSignOutUrl="/" />
