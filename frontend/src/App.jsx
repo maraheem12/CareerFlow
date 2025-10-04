@@ -12,7 +12,7 @@ import AddJob from "./pages/AddJob.jsx";
 import ManageJobs from "./pages/ManageJobs.jsx";
 import ViewApplications from "./pages/ViewApplications.jsx";
 
-import Navbar from "./components/Navbar.jsx";
+
 import Footer from "./components/Footer.jsx";
 import RecruiterLogin from "./components/RecruiterLogin.jsx";
 
@@ -20,8 +20,12 @@ import RecruiterLogin from "./components/RecruiterLogin.jsx";
 import { AppContext } from "./context/AppContext.jsx";
 import { useContext } from "react";
 
+
+import "quill/dist/quill.snow.css";
+
 function App() {
   const { showRecruiterLogin } = useContext(AppContext);
+
   return (
     <div>
       
@@ -33,8 +37,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/apply-job/:id" element={<ApplyJob />} />
-          <Route path="applications" element={<Applications />} />
-          <Route path="dashboard" element={<DashBoard />} >
+          <Route path="/applications" element={<Applications />} />
+          <Route path="/dashboard" element={<DashBoard />} >
             <Route path="add-job" element={<AddJob/>} />
             <Route path="manage-jobs" element={<ManageJobs />} />
             <Route path="view-applications" element={<ViewApplications />} />
