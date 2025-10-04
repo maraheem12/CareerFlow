@@ -7,7 +7,7 @@ const DashBoard = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navbar Header */}
-      <div className="shadow py-4">
+      <div className="shadow py-4 backdrop-blur z-50">
         <div className="flex px-5 justify-between items-center">
           <button
             onClick={() => {
