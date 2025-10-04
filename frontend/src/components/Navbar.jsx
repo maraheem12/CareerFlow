@@ -3,6 +3,8 @@ import { assets } from "../assets/assets";
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
+import { useContext } from "react";
 
 const Navbar = () => {
   const { openSignIn } = useClerk();
@@ -13,6 +15,7 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
   const navigate = useNavigate();
+  const { setShowRecruiterLogin } = useContext(AppContext);
 
   return (
     <div className="sticky top-0 shadow py-4 bg-white/80 backdrop-blur z-50">
@@ -82,7 +85,9 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <button className="text-gray-600 cursor-pointer hover:bg-gray-200 px-4 py-2 rounded-full">
+              <button 
+              onClick={(e) => setShowRecruiterLogin(true)}
+              className="text-gray-600 cursor-pointer hover:bg-gray-200 px-4 py-2 rounded-full">
                 Recruiter Login
               </button>
               <button
@@ -184,7 +189,9 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex flex-col items-center gap-4 w-full">
-                <button className="text-gray-600 cursor-pointer hover:bg-gray-200 px-4 py-2 rounded-full w-full text-center">
+                <button 
+                onClick={(e) => { setShowRecruiterLogin(true); }}
+                className="text-gray-600 cursor-pointer hover:bg-gray-200 px-4 py-2 rounded-full w-full text-center">
                   Recruiter Login
                 </button>
                 <button

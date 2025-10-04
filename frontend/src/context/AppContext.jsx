@@ -9,17 +9,18 @@ export const AppContextProvider = (props) => {
     title: "",
     location: "",
     categories: [],
-    locations: []
+    locations: [],
   });
 
   const [isSearching, setIsSearching] = useState(false);
   const [jobs, setJobs] = useState([]);
+  const [showRecruiterLogin, setShowRecruiterLogin] = useState(false);
   const fetchJobs = async () => {
     setJobs(jobsData);
   };
   useEffect(() => {
     fetchJobs();
-  },[]);
+  }, []);
 
   const value = {
     searchFilter,
@@ -28,6 +29,9 @@ export const AppContextProvider = (props) => {
     setIsSearching,
     jobs,
     setJobs,
+
+    showRecruiterLogin,
+    setShowRecruiterLogin,
   };
   return (
     <AppContext.Provider value={value}>{props.children}</AppContext.Provider>

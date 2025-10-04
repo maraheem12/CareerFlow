@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { assets, jobsApplied } from "../assets/assets";
 import moment from "moment/moment";
+import Navbar from "../components/Navbar";
 
 const Applications = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [resume, setResume] = useState(null);
   return (
     <>
+      <Navbar/>
       <div className="container px-4 min-h-[65vh] 2xl:px-20 max-auto my-10  ">
         <h2 className="text-xl font-semibold">Your Resume</h2>
         <div className="flex gap-2 mb-6 mt-3 ">
