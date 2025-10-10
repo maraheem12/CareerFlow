@@ -19,3 +19,20 @@ const postJob = async (req, res) => {
 
 } 
 
+const getCompanyJobApplicants = async (req, res) => {
+
+}
+
+const getCompanyPostedJobs = async (req, res) => {
+
+}
+
+
+const changeJobApplicationStatus = async (req, res) => {
+
+}
+
+const changeVisibility = async (req, res) => {
+
+}
+
