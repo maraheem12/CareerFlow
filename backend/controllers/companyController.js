@@ -34,5 +34,6 @@ const changeJobApplicationStatus = async (req, res) => {
 
 const changeVisibility = async (req, res) => {
 
+    
 }
 
