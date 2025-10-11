@@ -8,15 +8,20 @@ import { clerkWebhooks } from "./controllers/webhooks.js"
 
 
 
+import companyRoutes from "./routes/comapanyRoutes.js"
+
+
 
 // Initialize express
 const app = express();
 
 await connectDB();
 
+
 //Middlewares 
 app.use(cors())
 app.use(express.json())
+app.use("/api/company", companyRoutes)
 
 app.get('/', (req, res) => res.send("API Working") )
 app.get("/debug-sentry", function mainHandler(req, res) {
