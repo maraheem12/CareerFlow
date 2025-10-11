@@ -1,94 +1,140 @@
-import Company from '../models/Company.js'
-import bcrypt from 'bcrypt'
-import generateToken from '../utils/generateTokens.js';
-import cloudinary from '../config/cloudinary.js';
-
-
-
+import Company from "../models/Company.js";
+import Job from "../models/Job.js";
+import bcrypt from "bcrypt";
+import generateToken from "../utils/generateTokens.js";
+import cloudinary from "../config/cloudinary.js";
 
 //Register a Comapany
-export const registerComapany = async (req, res) =>{
-    const { name, email, password } = req.body;
-    const imageFile = req.file;
+export const registerComapany = async (req, res) => {
+  const { name, email, password } = req.body;
+  const imageFile = req.file;
 
-    // 2. Validate input
-    if (!name || !email || !password || !imageFile) {
-        return res.json({ success: false, message: "Missing Details" });
+  // 2. Validate input
+  if (!name || !email || !password || !imageFile) {
+    return res.json({ success: false, message: "Missing Details" });
+  }
+
+  try {
+    // 3. Check if company already exists
+    const companyExists = await Company.findOne({ email });
+
+    if (companyExists) {
+      return res.json({
+        success: false,
+        message: "Company already registered",
+      });
     }
 
-    try {
-        // 3. Check if company already exists
-        const companyExists = await Company.findOne({ email });
+    // 4. Hash the password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
-        if (companyExists) {
-            return res.json({ success: false, message: 'Company already registered' });
-        }
+    const imageUpload = await cloudinary.uploader.upload(imageFile.path);
 
-        // 4. Hash the password
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
+    // 5. (Assumed Next Step) Create and save the new company
+    const company = new Company({
+      name,
+      email,
+      password: hashedPassword,
+      image: imageUpload.secure_url, // Assuming you store the file path
+    });
 
-        const imageUpload = await cloudinary.uploader.upload(imageFile.path);
+    await company.save();
 
-        // 5. (Assumed Next Step) Create and save the new company
-        const company = new Company({
-            name,
-            email,
-            password: hashedPassword,
-            image: imageUpload.secure_url // Assuming you store the file path
-        });
-
-        //await newCompany.save();
-
-        // 6. (Assumed Next Step) Send success response
-        res.json({
-            success: true,
-            message: "Company registered successfully",
-            company: {
-                _id: Company._id,
-                name: Company.name,
-                email: Company.email,
-                image: company.image
-            },
-            token: generateToken(company._id)       
-        });
-
-    } catch (error) {
-        console.error(error);
-        res.json({ success: false, message: "Server Error" });
-    }
-}   
+    // 6. (Assumed Next Step) Send success response
+    res.json({
+      success: true,
+      message: "Company registered successfully",
+      company: {
+        _id: Company._id,
+        name: Company.name,
+        email: Company.email,
+        image: company.image,
+      },
+      token: generateToken(company._id),
+    });
+  } catch (error) {
+    console.error(error);
+    res.json({ success: false, message: "Server Error" });
+  }
+};
 
 //Login a company
 export const loginCompany = async (req, res) => {
+  const { email, password } = req.body;
 
-}
+  try {
+    const company = await Company.findOne({ email });
+
+    if (!company) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Company not found" });
+    }
+
+    const isMatch = await bcrypt.compare(password, company.password);
+
+    if (isMatch) {
+      res.json({
+        success: true,
+        company: {
+          _id: company._id,
+          name: company.name,
+          email: company.email,
+          image: company.image,
+        },
+        token: generateToken(company._id),
+      });
+    } else {
+      res
+        .status(401)
+        .json({ success: false, message: "Invalid email or password" });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 //Get company Data
 export const getCompanyData = async (re, res) => {
-
-}
+  
+};
 
 //Post job
 export const postJob = async (req, res) => {
+    const { title , description, location, salary, level, category} = req.body;
 
-} 
+    const companyId = req.company._id;
 
-export const getCompanyJobApplicants = async (req, res) => {
+    try {
+        // 3. Create a new job instance
+        const newJob = new Job({
+            title,
+            description,
+            location,
+            salary,
+            companyId,
+            date: Date.now(),
+            category,
+            level
+        });
+        
+        // 4. Save the job to the database
+        await newJob.save();
 
-}
-
-export const getCompanyPostedJobs = async (req, res) => {
-
-}
-
-
-export const changeJobApplicationStatus = async (req, res) => {
-
-}
-
-export const changeVisibility = async (req, res) => {
-
+        // 5. Send success response with the new job data
+        res.status(201).json({ success: true, newJob });
     
-}
+    } catch (error) {
+        // 6. Handle any errors
+        res.status(500).json({ success: false, message: error });
+    }
+};
 
+export const getCompanyJobApplicants = async (req, res) => {};
+
+export const getCompanyPostedJobs = async (req, res) => {};
+
+export const changeJobApplicationStatus = async (req, res) => {};
+
+export const changeVisibility = async (req, res) => {};
