@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import { assets } from "../assets/assets";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const RecruiterLogin = () => {
+  const navigate = useNavigate();
   const [state, setState] = useState("Login");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,20 +15,46 @@ const RecruiterLogin = () => {
   const [image, setImage] = useState(null);
 
   const [isTextDataSubmitted, setIsTextDataSubmitted] = useState(false);
-  const {setShowRecruiterLogin } = useContext(AppContext);
+  const { setShowRecruiterLogin, backendUrl, setCompanyToken, setCompanyData } =
+    useContext(AppContext);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     if (state === "Sign Up" && !isTextDataSubmitted) {
       setIsTextDataSubmitted(true);
     }
-  };
-   useEffect(() => {
-      document.body.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = "unset";
+    try {
+      if (state === "Login") {
+        const { data } = await axios.post(backendUrl + "/api/company/login", {
+          email,
+          password,
+        });
+
+        if (data.success) {
+          console.log(data);
+          setCompanyData(data.company);
+          setCompanyToken(data.token);
+          localStorage.setItem("companyToken", data.token);
+          setShowRecruiterLogin(false);
+          navigate("/dashboard");
+          toast.success("Logged In Successfully");
+        } else {
+          toast.error(data.message);
+        }
       }
-    }, []);
+    } catch (error) {
+      toast.error(
+        "Login failed. Please check the connection or try again later."
+      );
+      console.error("Login API Error:", error); // Log the error for debugging
+    }
+  };
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
   return (
     <div className="absolute left-0 right-0 top-0 bottom-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center   ">
       <form
@@ -135,7 +165,12 @@ const RecruiterLogin = () => {
             </span>
           </p>
         )}
-        <img onClick={e => setShowRecruiterLogin(false)} className="absolute top-5 right-5 cursor-pointer" src={assets.cross_icon} alt="" />
+        <img
+          onClick={(e) => setShowRecruiterLogin(false)}
+          className="absolute top-5 right-5 cursor-pointer"
+          src={assets.cross_icon}
+          alt=""
+        />
       </form>
     </div>
   );

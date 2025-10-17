@@ -1,5 +1,7 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Home from "./pages/Home";
 import ApplyJob from "./pages/ApplyJob";
@@ -31,6 +33,7 @@ function App() {
       
       <main className="flex-grow">
         {showRecruiterLogin && <RecruiterLogin />}
+        <ToastContainer/>
         <Routes>
           <Route path="/" element={<Start />} />
           <Route path="/home" element={<Home />} />
