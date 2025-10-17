@@ -7,32 +7,35 @@ import { assets, jobsData } from "../assets/assets";
 import kconvert from "k-convert";
 import moment from "moment";
 import JobCard from "../components/JobCard";
+import axios from "axios";
+
 
 const ApplyJob = () => {
   const { id } = useParams();
-  // FIX 1: Initialize state to null to represent the "loading" state correctly.
+
   const [jobData, setJobData] = useState(null);
-  const { jobs } = useContext(AppContext);
+  const { jobs, backendUrl } = useContext(AppContext);
+  const fetchJobs = async () => {
+    try {
+      const { data } = await axios.get(`${backendUrl}/api/jobs/${id}`);
 
-  useEffect(() => {
-    // FIX 3: The logic should execute when the 'jobs' array is populated.
-    if (jobs.length > 0) {
-      const data = jobs.filter((job) => job._id === id);
-
-      if (data.length > 0) {
-        // FIX 2: Set the state to the first (and only) job object, not the array.
-        setJobData(data[0]);
+      if (data.success) {
+        setJobData(data.job);
+      } else {
+        toast.error(data.message);
       }
+    } catch (error) {
+      toast.error(error.message);
     }
-    // This effect runs whenever the job 'id' or the 'jobs' list changes.
-  }, [id, jobs]);
+  };
+  useEffect(() => {
+    fetchJobs();
+  }, [id]);
 
-  // Render a loading component until jobData is populated.
   if (!jobData) {
     return <Loading />;
   }
 
-  // If jobData exists, render the job details.
   return (
     <div className="min-h-screen flex flex-col py-10 px-4 container 2xl:px-20 mx-auto  ">
       <div className=" bg-white text-black rounded-lg w-full">
@@ -40,7 +43,7 @@ const ApplyJob = () => {
           <div className="flex flex-col md:flex-row item-center ">
             <img
               className="h-24 bg-white rounded-lg p-4 mr-4 max-md:mb-4 border   "
-              src={assets.company_icon}
+              src={jobData.companyId.image}
               alt=""
             />
             <div className=" text-center md:text-left text-neutral-700 ">

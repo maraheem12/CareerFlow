@@ -1,8 +1,8 @@
 import { createContext, useEffect } from "react";
 import { useState } from "react";
-import { JobCategories, jobsData } from "../assets/assets";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useUser, useAuth } from "@clerk/clerk-react";
 
 export const AppContext = createContext();
 
@@ -15,14 +15,17 @@ export const AppContextProvider = (props) => {
   });
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
+  const { user } = useUser();
+  const { getToken } = useAuth();
+
   const [isSearching, setIsSearching] = useState(false);
   const [jobs, setJobs] = useState([]);
   const [showRecruiterLogin, setShowRecruiterLogin] = useState(false);
   const [companyToken, setCompanyToken] = useState(null);
   const [companyData, setCompanyData] = useState(null);
-  const fetchJobs = async () => {
-    setJobs(jobsData);
-  };
+  const [userData, setUserData] = useState(null);
+  const [userApplications, setuserApplications] = useState(null);
+
   const fetchCompanyData = async () => {
     try {
       const { data } = await axios.get(`${backendUrl}/api/company/company`, {
@@ -30,7 +33,7 @@ export const AppContextProvider = (props) => {
       });
       if (data.success) {
         setCompanyData(data.company);
-        console.log("Fetched company data:", data.company); 
+        console.log("Fetched company data:", data.company);
         toast.success("Company data fetched successfully");
       } else {
         toast.error(data.message);
@@ -40,6 +43,25 @@ export const AppContextProvider = (props) => {
       toast.error("Failed to fetch company data");
     }
   };
+  // Function to fetch jobs
+  const fetchJobs = async () => {
+    try {
+      const { data } = await axios.get(`${backendUrl}/api/jobs`);
+
+      if (data.success) {
+        setJobs(data.jobs);
+        console.log(data.jobs);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+
+  
+
   useEffect(() => {
     fetchJobs();
     const storedCompanyToken = localStorage.getItem("companyToken");

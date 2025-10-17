@@ -2,6 +2,7 @@ import React from "react";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 
+
 const JobCard = ({ job }) => {
   const navigate = useNavigate();
   return (
@@ -11,7 +12,7 @@ const JobCard = ({ job }) => {
         {/* Placeholder for the company logo */}
         {/* Replace `companyLogo` with your actual image import or path if it's static */}
         <img
-          src={assets.google_logo} // Using Google logo as a placeholder demonstration
+          src={job.companyId.image} // Using Google logo as a placeholder demonstration
           alt={`${job.title} Company Logo`}
           className="w-10 h-10 mr-3 object-contain"
         />
