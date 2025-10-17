@@ -21,7 +21,7 @@ router.post("/login", loginCompany);
 router.get("/company", protectCompany, getCompanyData);
 router.post("/post-job", protectCompany, postJob);
 router.get("/applications", protectCompany, getCompanyJobApplicants);
-router.get("/list-job", protectCompany, getCompanyPostedJobs);
+router.get("/list-jobs", protectCompany, getCompanyPostedJobs);
 router.post("/change-status", protectCompany, changeJobApplicationStatus);
 router.post("/change-visibility", protectCompany, changeVisibility);
 
