@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, useNavigate, NavLink } from "react-router-dom";
 import { assets } from "../assets/assets";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+import axios from "axios";
+
+
 
 const DashBoard = () => {
   const navigate = useNavigate();
+
+  const { companyData, setCompanyData, setCompanyToken } = useContext(AppContext);
+  const logout = () => {
+    setCompanyData(null);
+    setCompanyToken(null);
+    localStorage.removeItem("companyToken");
+    navigate("/");
+  }
+  useEffect(() => {
+    if(companyData){
+      navigate("/dashboard/manage-jobs");
+    }
+  }, [companyData]);
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navbar Header */}
@@ -22,21 +40,23 @@ const DashBoard = () => {
               <p className="text-blue-500">Flow</p>
             </div>
           </button>
-          <div className="flex items-center gap-3">
-            <p className="max-sm:hidden">Welcome</p>
-            <div className="relative group">
-              <img
-                className="w-8 border rounded-full"
-                src={assets.company_icon}
-                alt="Profile"
-              />
-              <div className="absolute hidden group-hover:block top-full right-0 z-10 text-black rounded pt-2">
-                <ul className="list-none m-0 p-2 bg-white rounded-md border text-sm">
-                  <li className="py-1 px-2 cursor-pointer pr-10">Logout</li>
-                </ul>
+          {companyData && (
+            <div className="flex items-center gap-3">
+              <p className="max-sm:hidden">Welcome {companyData.name}</p>
+              <div className="relative group">
+                <img
+                  className="w-8 border rounded-full"
+                  src={companyData.image}
+                  alt="Profile"
+                />
+                <div className="absolute hidden group-hover:block top-full right-0 z-10 text-black rounded pt-2">
+                  <ul className="list-none m-0 p-2 bg-white rounded-md border text-sm">
+                    <li onClick={logout} className="py-1 px-2 cursor-pointer pr-10">Logout</li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
 
@@ -92,28 +112,10 @@ const DashBoard = () => {
 
 export default DashBoard;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import React from "react";
 // import { Outlet } from "react-router-dom";
 // import { assets } from "../assets/assets";
 // import { useNavigate, NavLink } from "react-router-dom";
-
 
 // const DashBoard = () => {
 //   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Home from "./pages/Home";
 import ApplyJob from "./pages/ApplyJob";
@@ -14,26 +14,22 @@ import AddJob from "./pages/AddJob.jsx";
 import ManageJobs from "./pages/ManageJobs.jsx";
 import ViewApplications from "./pages/ViewApplications.jsx";
 
-
 import Footer from "./components/Footer.jsx";
 import RecruiterLogin from "./components/RecruiterLogin.jsx";
-
 
 import { AppContext } from "./context/AppContext.jsx";
 import { useContext } from "react";
 
-
 import "quill/dist/quill.snow.css";
 
 function App() {
-  const { showRecruiterLogin } = useContext(AppContext);
+  const { showRecruiterLogin, companyToken } = useContext(AppContext);
 
   return (
     <div>
-      
       <main className="flex-grow">
         {showRecruiterLogin && <RecruiterLogin />}
-        <ToastContainer/>
+        <ToastContainer />
         <Routes>
           <Route path="/" element={<Start />} />
           <Route path="/home" element={<Home />} />
@@ -41,10 +37,17 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/apply-job/:id" element={<ApplyJob />} />
           <Route path="/applications" element={<Applications />} />
-          <Route path="/dashboard" element={<DashBoard />} >
-            <Route path="add-job" element={<AddJob/>} />
-            <Route path="manage-jobs" element={<ManageJobs />} />
-            <Route path="view-applications" element={<ViewApplications />} />
+          <Route path="/dashboard" element={<DashBoard />}>
+            {companyToken ? (
+              <>
+                <Route path="add-job" element={<AddJob />} />
+                <Route path="manage-jobs" element={<ManageJobs />} />
+                <Route
+                  path="view-applications"
+                  element={<ViewApplications />}
+                />
+              </>
+            ) : null}
           </Route>
         </Routes>
       </main>

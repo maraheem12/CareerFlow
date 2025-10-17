@@ -21,7 +21,7 @@ const RecruiterLogin = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     if (state === "Sign Up" && !isTextDataSubmitted) {
-      setIsTextDataSubmitted(true);
+      return setIsTextDataSubmitted(true);
     }
     try {
       if (state === "Login") {
@@ -39,6 +39,34 @@ const RecruiterLogin = () => {
           navigate("/dashboard");
           toast.success("Logged In Successfully");
         } else {
+          toast.error(data.message);
+        }
+      } else {
+        const formData = new FormData();
+
+        // Append all the data fields. The key (e.g., 'name', 'image') must match
+        // what your backend expects (e.g., in your multer configuration).
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("password", password);
+        formData.append("image", image); // The 'image' variable should be a File object
+
+        // Make the asynchronous POST request to the registration endpoint
+        const { data } = await axios.post(
+          `${backendUrl}/api/company/register`,
+          formData
+        );
+
+
+        if (data.success) {
+          setCompanyData(data.company);
+          setCompanyToken(data.token);
+          localStorage.setItem("companyToken", data.token);
+          setShowRecruiterLogin(false);
+          navigate("/dashboard");
+          toast.success("Registered Successfully");
+        }
+        else {
           toast.error(data.message);
         }
       }
