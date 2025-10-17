@@ -1,6 +1,6 @@
 import express from "express";
 import {
-  applyForjob,
+  applyForJob,
   getUserData,
   getUserJobApplications,
   updateUserResume,
@@ -10,7 +10,7 @@ import upload from "../config/multer.js";
 const router = express.Router();
 
 router.get("/user", getUserData);
-router.post("apply", applyForjob);
+router.post("apply", applyForJob);
 router.get("/applications", getUserJobApplications);
 router.post("/update-resume", upload.single("resume"), updateUserResume);
 

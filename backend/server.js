@@ -6,6 +6,7 @@ import "./config/instrument.js"
 import * as Sentry from "@sentry/node";
 
 import { clerkWebhooks } from "./controllers/webhooks.js"
+import { clerkMiddleware } from "@clerk/express"
 
 
 import companyRoutes from "./routes/companyRoutes.js"
@@ -26,6 +27,7 @@ await connectDB();
 //Middlewares 
 app.use(cors())
 app.use(express.json())
+app.use(clerkMiddleware())
 app.use("/api/company", companyRoutes)
 app.use("/api/jobs", jobRoutes)
 app.use('/api/users', userRoutes)
