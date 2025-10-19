@@ -33,8 +33,7 @@ export const AppContextProvider = (props) => {
       });
       if (data.success) {
         setCompanyData(data.company);
-        console.log("Fetched company data:", data.company);
-        toast.success("Company data fetched successfully");
+        //console.log("Fetched company data:", data.company);
       } else {
         toast.error(data.message);
       }
