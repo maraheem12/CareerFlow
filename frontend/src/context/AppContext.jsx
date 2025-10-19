@@ -24,7 +24,7 @@ export const AppContextProvider = (props) => {
   const [companyToken, setCompanyToken] = useState(null);
   const [companyData, setCompanyData] = useState(null);
   const [userData, setUserData] = useState(null);
-  const [userApplications, setuserApplications] = useState(null);
+  const [userApplications, setUserApplications] = useState(null);
 
   const fetchCompanyData = async () => {
     try {
@@ -59,8 +59,41 @@ export const AppContextProvider = (props) => {
     }
   };
 
+  const fetchUserData = async () => {
+    try {
+      const token = await getToken();
+      const { data } = await axios.get(`${backendUrl}/api/users/user`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (data.success) {
+        setUserData(data.user);
 
-  
+        console.log("Fetched user data:", data.user);
+        toast.success("User data fetched successfully");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error("Failed to fetch user data");
+    }
+  };
+
+  const fetchUserApplicationsData = async () => {
+    try {
+      const token = await getToken();
+      const { data } = await axios.get(`${backendUrl}/api/users/applications`, {
+        headers: { Authorization: `Bearer ${token}` },
+      }); 
+
+      if (data.success) {
+        setUserApplications(data.applications); // Assuming the payload has 'applications'
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   useEffect(() => {
     fetchJobs();
@@ -78,6 +111,13 @@ export const AppContextProvider = (props) => {
       fetchCompanyData();
     }
   }, [companyToken]);
+
+  useEffect(() => {
+    if (user) {
+      fetchUserData();
+      fetchUserApplicationsData();
+    }
+  }, [user]);
 
   const value = {
     searchFilter,
@@ -99,6 +139,15 @@ export const AppContextProvider = (props) => {
     setShowRecruiterLogin,
 
     backendUrl,
+
+    userData,
+    setUserData,
+
+    userApplications,
+    setUserApplications,
+
+    fetchUserData,
+    fetchUserApplicationsData
   };
   return (
     <AppContext.Provider value={value}>{props.children}</AppContext.Provider>

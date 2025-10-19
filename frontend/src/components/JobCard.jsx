@@ -1,6 +1,7 @@
 import React from "react";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 const JobCard = ({ job }) => {
@@ -41,7 +42,7 @@ const JobCard = ({ job }) => {
           onClick={() => {
             navigate(`/apply-job/${job._id}`);
             scrollTo(0, 0);
-          }}
+          }}  
           className="bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-500 cursor-pointer transition-colors duration-200"
         >
           Apply now

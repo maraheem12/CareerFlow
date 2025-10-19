@@ -6,10 +6,11 @@ import { AppContext } from "../context/AppContext";
 import { useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loading from "../components/Loading.jsx";
 
 const ManageJobs = () => {
   const navigate = useNavigate();
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState(false);
   const { backendUrl, companyToken } = useContext(AppContext);
   const fetchCompanyJobs = async () => {
     try {
@@ -55,7 +56,10 @@ const ManageJobs = () => {
       fetchCompanyJobs();
     }
   }, [companyToken]);
-  return (
+  return  jobs ? jobs.length === 0 ? (
+  <div className="flex item-center justify-center h-[70vh] " >
+    <p className="text-xl sm:text-2xl" >No Jobs Available or Posted</p>
+  </div>) : (
     <div className="container mx-auto p-4 max-w-5xl">
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200 max-sm:text-sm">
@@ -121,7 +125,7 @@ const ManageJobs = () => {
         </button>
       </div>
     </div>
-  );
+  ) : <Loading />;
 };
 
 export default ManageJobs;

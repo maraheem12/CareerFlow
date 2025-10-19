@@ -5,7 +5,6 @@ import generateToken from "../utils/generateTokens.js";
 import cloudinary from "../config/cloudinary.js";
 import JobApplication from "../models/JobApplication.js";
 
-
 //Register a Comapany
 export const registerComapany = async (req, res) => {
   const { name, email, password } = req.body;
@@ -140,7 +139,21 @@ export const postJob = async (req, res) => {
   }
 };
 
-export const getCompanyJobApplicants = async (req, res) => {};
+export const getCompanyJobApplicants = async (req, res) => {
+  try {
+    const companyId = req.company._id;
+
+    // Find job applications for the user and populate related data
+    const applications = await JobApplication.find({ companyId })
+      .populate("userId", "name image resume")
+      .populate("jobId", "title location category level salary")
+      .exec();
+
+    return res.json({ success: true, applications });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 export const getCompanyPostedJobs = async (req, res) => {
   try {
@@ -162,7 +175,18 @@ export const getCompanyPostedJobs = async (req, res) => {
   }
 };
 
-export const changeJobApplicationStatus = async (req, res) => {};
+export const changeJobApplicationStatus = async (req, res) => {
+  try {
+    const { id, status } = req.body;
+
+    // Find Job application and update status
+    await JobApplication.findOneAndUpdate({ _id: id }, { status });
+
+    res.json({ success: true, message: "Status Changed" });
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+};
 
 export const changeVisibility = async (req, res) => {
   try {

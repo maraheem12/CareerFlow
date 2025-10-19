@@ -3,6 +3,7 @@ import JobApplication from "../models/JobApplication.js";
 import Job from "../models/Job.js";
 import { v2 as cloudinary } from "cloudinary";
 
+
 export const getUserData = async (req, res) => {
   const userId = req.auth.userId;
 
@@ -28,12 +29,11 @@ export const applyForJob = async (req, res) => {
     const existingApplication = await JobApplication.findOne({ jobId, userId });
 
     if (existingApplication) {
-      // 409 Conflict is a good status code for "already exists".
       return res
-        .status(409)
+        .status(500 )
         .json({
-          success: false,
-          message: "You have already applied for this job",
+          success: true,
+          message: "Already applied for this job",
         });
     }
 
@@ -78,37 +78,68 @@ export const getUserJobApplications = async (req, res) => {
     }
 };
 
-export const updateUserResume = async (req, res) => {
-    try {
-        const userId = req.auth.userId;
-        const resumeFile = req.resumeFile; // Assuming this is handled by middleware
+// export const updateUserResume = async (req, res) => {
+//     try {
+//         const userId = req.auth.userId;
+//         const resumeFile = req.file; // Assuming this is handled by middleware
 
-        // 1. Find the user in the database
-        const userData = await User.findById(userId);
-        if (!userData) {
-            return res.status(404).json({ success: false, message: 'User not found' });
-        }
+//         // 1. Find the user in the database
+//         const userData = await User.findById(userId);
+//         if (!userData) {
+//             return res.status(404).json({ success: false, message: 'User not found' });
+//         }
 
-        // 2. Check if a new resume file was provided
-        if (resumeFile) {
-            // Upload the file to Cloudinary
-            const resumeUpload = await cloudinary.uploader.upload(resumeFile, {
-                resource_type: "auto", // Automatically detect file type (e.g., pdf, docx)
-                folder: "resumes" // Optional: organize uploads in a specific folder
-            });
+//         // 2. Check if a new resume file was provided
+//         if (resumeFile) {
+//             // Upload the file to Cloudinary
+//             const resumeUpload = await cloudinary.uploader.upload(resumeFile, {
+//                 resource_type: "auto", // Automatically detect file type (e.g., pdf, docx)
+//                 folder: "resumes" // Optional: organize uploads in a specific folder
+//             });
             
-            // Update the user's resume URL with the secure URL from Cloudinary
-            userData.resume = resumeUpload.secure_url;
-        }
+//             // Update the user's resume URL with the secure URL from Cloudinary
+//             userData.resume = resumeUpload.secure_url;
+//         }
 
-        // 3. Save the updated user data
-        await userData.save();
+//         // 3. Save the updated user data
+//         await userData.save();
 
-        // 4. Send a success response
-        return res.json({ success: true, message: 'Resume Updated' });
+//         // 4. Send a success response
+//         return res.json({ success: true, message: 'Resume Updated' });
 
-    } catch (error) {
-        console.error("Error updating resume:", error);
-        return res.status(500).json({ success: false, message: error.message });
+//     } catch (error) {
+//         console.error("Error updating resume:", error);
+//         return res.status(500).json({ success: false, message: error.message });
+//     }
+// };
+//  E:/Web Development/CareerFlow/backend/controllers/userController.js
+
+export const updateUserResume = async (req, res) => {
+  try {
+    const userId = req.auth.userId;
+    const resumeFile = req.file; 
+
+    const userData = await User.findById(userId);
+    if (!userData) {
+      return res.status(404).json({ success: false, message: 'User not found' });
     }
+
+    if (resumeFile) {
+      // Corrected line: Use resumeFile.path instead of the whole object
+      const resumeUpload = await cloudinary.uploader.upload(resumeFile.path, {
+        resource_type: "auto", 
+        folder: "resumes" 
+      });
+      
+      userData.resume = resumeUpload.secure_url;
+    }
+
+    await userData.save();
+
+    return res.json({ success: true, message: 'Resume Updated' });
+
+  } catch (error) {
+    console.error("Error updating resume:", error);
+    return res.status(500).json({ success: false, message: error.message });
+  }
 };
