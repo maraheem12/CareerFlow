@@ -223,6 +223,7 @@ export const jobsData = [
         date: 1729681667114,
         category: "Programming",
     },
+    
     {
         _id: '2',
         title: "Data Scientist",

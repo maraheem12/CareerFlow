@@ -115,7 +115,7 @@ const ViewApplications = () => {
   const fetchCompanyJobApplications = async () => {
     try {
       const { data } = await axios.get(
-        backendUrl + "/api/company/applications",
+        backendUrl + "/api/user/applications",
         {
           headers: { token: companyToken },
         }

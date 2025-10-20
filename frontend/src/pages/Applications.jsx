@@ -15,8 +15,13 @@ const Applications = () => {
   const { user } = useUser();
   const { getToken } = useAuth();
 
-  
-const { userData, backendUrl, userApplications, fetchUserData, fetchUserApplicationsData } = useContext(AppContext);
+  const {
+    userData,
+    backendUrl,
+    userApplications,
+    fetchUserData,
+    fetchUserApplicationsData,
+  } = useContext(AppContext);
   const updateResume = async () => {
     try {
       const formData = new FormData();
@@ -44,10 +49,8 @@ const { userData, backendUrl, userApplications, fetchUserData, fetchUserApplicat
     setResume(null);
   };
 
-
-
   useEffect(() => {
-    if(user){
+    if (user) {
       fetchUserApplicationsData();
     }
   }, [user]);
@@ -79,20 +82,25 @@ const { userData, backendUrl, userApplications, fetchUserData, fetchUserApplicat
               </button>
             </>
           ) : (
-            <div className="flex gap-2">
-              <a
-                className="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg "
-                href={userData.resume} target="_blank" 
-              >
-                Resume
-              </a>
-              <button
-                onClick={() => setIsEdit(true)}
-                className="text-gray-500 border cursor-pointer hover:bg-gray-100 border-gray-300 rounded-lg px-4 py-2 "
-              >
-                Edit
-              </button>
-            </div>
+            // Add check here: Only render this section if userData exists
+            userData && (
+              <div className="flex gap-2">
+                <a
+                  className="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg "
+                  // Optional chaining added to safely access userData.resume
+                  href={userData.resume}
+                  target="_blank"
+                >
+                  Resume
+                </a>
+                <button
+                  onClick={() => setIsEdit(true)}
+                  className="text-gray-500 border cursor-pointer hover:bg-gray-100 border-gray-300 rounded-lg px-4 py-2 "
+                >
+                  Edit
+                </button>
+              </div>
+            )
           )}
         </div>
         <h2 className="text-xl font-semibold mb-4 ">Jobs Applied</h2>
@@ -157,3 +165,42 @@ const { userData, backendUrl, userApplications, fetchUserData, fetchUserApplicat
 };
 
 export default Applications;
+
+// {isEdit || (userData && userData.resume === "") ? (
+//             <>
+//               <label htmlFor="resumeUpload" className=" flex items-center">
+//                 <p className="bg-blue-100 hover:bg-blue-200 text-blue-600 px-4 py-2 rounded-lg mr-2 cursor-pointer ">
+//                   {resume ? resume.name : "Upload Resume"}
+//                 </p>
+//                 <input
+//                   id="resumeUpload"
+//                   onChange={(e) => setResume(e.target.files[0])}
+//                   accept="application/pdf"
+//                   type="file"
+//                 />
+//                 <img src={assets.profile_upload_icon} alt="" />
+//               </label>
+//               <button
+//                 onClick={updateResume}
+//                 className="bg-sky-50 cursor-pointer border hover:bg-sky-100 border-blue-500 text-blue-400 rounded-lg px-4 py-2 "
+//               >
+//                 Save
+//               </button>
+//             </>
+//           ) : (
+//             <div className="flex gap-2">
+//               <a
+//                 className="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg "
+//                 href={userData.resume}
+//                 target="_blank"
+//               >
+//                 Resume
+//               </a>
+//               <button
+//                 onClick={() => setIsEdit(true)}
+//                 className="text-gray-500 border cursor-pointer hover:bg-gray-100 border-gray-300 rounded-lg px-4 py-2 "
+//               >
+//                 Edit
+//               </button>
+//             </div>
+//           )}

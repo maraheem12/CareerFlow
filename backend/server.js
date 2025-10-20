@@ -13,14 +13,8 @@ import companyRoutes from "./routes/companyRoutes.js"
 import jobRoutes from "./routes/jobRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
 
-
-
-
-
-
 // Initialize express
 const app = express();
-
 await connectDB();
 
 

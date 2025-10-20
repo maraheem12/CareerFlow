@@ -95,7 +95,7 @@ const HeroSection = () => {
           </p>
           <div className="mt-8 flex flex-wrap justify-center items-center gap-x-14 gap-y-8">
             {companyLogos.map((logoName) => (
-              <img className="w-19" src={logoName.src} alt={logoName.name} />
+              <img className="w-19" src={logoName.src} key={logoName.name} alt={logoName.name} />
             ))}
           </div>
         </div>

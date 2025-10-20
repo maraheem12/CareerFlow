@@ -85,7 +85,7 @@ export const AppContextProvider = (props) => {
       }); 
 
       if (data.success) {
-        setUserApplications(data.applications); // Assuming the payload has 'applications'
+        setUserApplications(data.applications); 
       } else {
         toast.error(data.message);
       }
