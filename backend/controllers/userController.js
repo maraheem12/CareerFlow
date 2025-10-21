@@ -63,8 +63,6 @@ export const getUserJobApplications = async (req, res) => {
     try {
         const userId = req.auth().userId;
         if (!userId) {
-            // This should ideally be caught by Clerk middleware, 
-            // but it's a good safeguard for 401 Unauthorized errors.
             return res.status(401).json({ success: false, message: 'Authentication failed.' });
         }
 

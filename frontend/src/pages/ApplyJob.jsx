@@ -13,11 +13,13 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 import Navbar from "../components/Navbar";
 
+
 const ApplyJob = () => {
   const { id } = useParams();
 
   const [jobData, setJobData] = useState(null);
   const [isAlreadyApplied, setIsAlreadyApplied] = useState(false);
+  const navigate = useNavigate();
 
   const {
     jobs,
@@ -27,13 +29,11 @@ const ApplyJob = () => {
     fetchUserApplicationsData,
   } = useContext(AppContext);
   const { getToken } = useAuth();
-
-  const navigate = useNavigate();
   const applyHandler = async () => {
     try {
       if (!userData) {
         toast.error("Please login to apply for jobs.");
-        Navigate("/home");
+        navigate("/home");
         return;
       }
       if (!userData.resume) {

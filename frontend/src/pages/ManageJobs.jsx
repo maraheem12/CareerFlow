@@ -19,7 +19,7 @@ const ManageJobs = () => {
       });
       if (data.success) {
         setJobs(data.jobsData.reverse());
-        console.log("Fetched company jobs:", data.jobsData);
+        //console.log("Fetched company jobs:", data.jobsData);
       } else {
         toast.error(data.message);
       }
