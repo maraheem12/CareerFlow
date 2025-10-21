@@ -34,8 +34,10 @@ app.get("/debug-sentry", function mainHandler(req, res) {
 });
 
 
-//Routes for backend
-app.post("/webhooks", clerkWebhooks);
+//Routes for backendapp.post("/webhooks", express.raw({ type: "application/json" }), clerkWebhooks);
+app.post("/webhooks", express.raw({ type: "application/json" }), clerkWebhooks);
+
+//app.post("/webhooks", clerkWebhooks);
 
 const PORT = process.env.PORT || 5000;
 Sentry.setupExpressErrorHandler(app);
