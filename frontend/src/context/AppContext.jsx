@@ -67,8 +67,8 @@ export const AppContextProvider = (props) => {
       if (data.success) {
         setUserData(data.user);
 
-        console.log("Fetched user data:", data.user);
-        toast.success("User data fetched successfully");
+        // console.log("Fetched user data:", data.user);
+        // toast.success("User data fetched successfully");
       } else {
         toast.error(data.message);
       }

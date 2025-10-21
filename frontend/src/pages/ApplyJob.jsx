@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 import Navbar from "../components/Navbar";
 
-
 const ApplyJob = () => {
   const { id } = useParams();
 
@@ -82,18 +81,26 @@ const ApplyJob = () => {
     }
   };
 
+  // const checkAlreadyApplied = () => {
+  //   const hasApplied = userApplications.some(
+  //     (item) => item.jobId._id === jobData._id
+  //   );
+  //   setIsAlreadyApplied(hasApplied);
+  // };
   const checkAlreadyApplied = () => {
+    if (!jobData || !userApplications) return;
     const hasApplied = userApplications.some(
-      (item) => item.jobId._id === jobData._id
+      (item) => item.jobId && item.jobId._id === jobData._id
     );
     setIsAlreadyApplied(hasApplied);
   };
 
   useEffect(() => {
-    if (userApplications.length > 0 && jobData) {
+    if (userApplications?.length > 0 && jobData) {
       checkAlreadyApplied();
     }
   }, [jobData, userApplications, id]);
+
   useEffect(() => {
     fetchJobsbyId();
   }, [id]);
