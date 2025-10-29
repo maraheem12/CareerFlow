@@ -45,25 +45,22 @@ cd backend
 # Install dependencies
 npm install
 
-# Create a .env file in the root of the backend directory and include the following variable names (without values)
+# Create a .env file in the root of the backend directory and include the following variable names
 
 MONGO_DB_URI=
 PORT=
 CLERK_WEB_HOOK=
-
 CLOUDINARY_NAME=
 CLOUDINARY_API_KEY=
 CLOUDINARY_SECRET_KEY=
-
 JWT_SECRET=
-
 CLERK_PUBLISHABLE_KEY=
 CLERK_SECRET_KEY=
 
 # Start the backend server
 npm run server
 
-# The backend will typically run on http://localhost:5000 (or the port you define in .env)
+ The backend will typically run on http://localhost:5000 (or the port you define in .env)
 
 
 
