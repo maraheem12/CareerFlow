@@ -3,26 +3,26 @@
  Deployement link: https://career-flow-black.vercel.app/
 
 ### Home Page
-![alt text](image.png)
+![alt text](/frontend/public/image-1.png)
 
 ### Apply Job Page
-![alt text](image-2.png)
+![alt text](/frontend/public/image-2.png)
 
-![alt text](image-3.png)
+![alt text](/frontend/public/image-3.png)
 
-![alt text](image-8.png)
+![alt text](/frontend/public/image-8.png)
 
 ### Applied Jobs Page
-![alt text](image-4.png)
+![alt text](/frontend/public/image-4.png)
 
 ### Recruiter DashBoard
-![alt text](image-5.png)
+![alt text](/frontend/public/image-5.png)
 
 ### Recruiter JobPosting
-![alt text](image-6.png)
+![alt text](/frontend/public/image-6.png)
 
 ### Recruiter JobListing
-![alt text](image-7.png)
+![alt text](/frontend/public/image-7.png)
 
 This folder contains the frontend of CareerFlow — a web application that helps students discover jobs, apply to positions, and helps recruiters post and manage job listings. The frontend is built with modern web tooling and a component-based architecture to keep the UI fast, accessible, and easy to extend.
 
