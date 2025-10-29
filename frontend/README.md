@@ -1,12 +1,55 @@
-# React + Vite
+# CareerFlow — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This folder contains the frontend of CareerFlow — a web application that helps students discover jobs, apply to positions, and helps recruiters post and manage job listings. The frontend is built with modern web tooling and a component-based architecture to keep the UI fast, accessible, and easy to extend.
 
-Currently, two official plugins are available:
+## What this project is
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- A responsive single-page application that lists jobs, shows job details, supports applications, and provides dashboard pages for recruiters and applicants.
+- Built using a component-driven approach (see `src/components`) and a central app context (`src/context/AppContext.jsx`).
 
-## Expanding the ESLint configuration
+## Quick features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Job listing and search
+- Recruiter job posting and management
+- Application submission and viewing
+- Simple authentication flows wired to the backend
+
+## Tech stack (frontend)
+
+- React + Vite
+- Plain CSS and component-based styling
+- Lightweight state/context via `AppContext`
+
+## Want to run the frontend locally
+
+1. Install dependencies:
+
+   npm install
+
+2. Start the dev server:
+
+   npm run dev
+
+3. Open the app in your browser (Vite will show the local URL, usually http://localhost:5173).
+
+Note: The frontend expects the backend API to be available in `../backend` or configured via environment variables. See the repository root and backend `README` (if present) for backend setup.
+
+## Contributing — we'd love your help!
+
+Contributions are very welcome. If you'd like to help, please:
+
+1. Fork the repository and create a feature branch.
+2. Open a clear pull request describing what you changed and why.
+3. Keep changes focused and include small, testable commits.
+
+Whether it's fixing a bug, improving UI/UX, adding tests, or writing documentation — feel free to jump in. No contribution is too small. Be respectful, follow existing code style, and if you're uncertain about a change, open an issue or ask for feedback on your PR.
+
+## Code of conduct
+
+Please be respectful and constructive. Behave as you would in a professional open-source community.
+
+## License
+
+This project is open source — include a license at the repo root if not already present (for example, MIT).
+
+Thanks for checking out CareerFlow — we look forward to your contributions!
