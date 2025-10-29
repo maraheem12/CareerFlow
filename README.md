@@ -20,7 +20,7 @@ This folder contains the frontend of CareerFlow — a web application that helps
 - Plain CSS and component-based styling
 - Lightweight state/context via `AppContext`
 
-## Want to run the frontend locally
+# Want to run the frontend locally
 
 1. Install dependencies:
 
@@ -36,20 +36,6 @@ This folder contains the frontend of CareerFlow — a web application that helps
 ## Want to run the project locally
 
 ### Frontend and Backend Setup
-
-
-## -------- FRONTEND --------
-# Navigate to frontend folder
-cd frontend
-
-# Install dependencies
-npm install
-
-# Start the frontend development server
-npm run dev
-
-# Open the app in your browser (Vite will show the local URL, usually http://localhost:5173)
-# Note: The frontend expects the backend API to be available in ../backend or via environment variables.
 
 
 # -------- BACKEND --------
